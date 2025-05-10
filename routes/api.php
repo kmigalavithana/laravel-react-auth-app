@@ -3,6 +3,6 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/user', function (Request $request) {
+Route::post('/sign-in', function (Request $request) {
     return 'hello';
 });
