@@ -8,3 +8,7 @@ export interface ISignInFromProp {
     handleInputField: (event:React.ChangeEvent<HTMLInputElement>) => void
     handleSubmit: (event:React.FormEvent) =>  Promise<void>
 }
+
+export interface IUserSignInPayload {
+    signDetails: ISignInState;
+}

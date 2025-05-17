@@ -13,6 +13,7 @@ class UserController extends Controller
 {
     public function userSighIn(Request $request): JsonResponse
     {
+        Log::info('work');
 
         $user = User::where('email', $request->email)->first();
 
@@ -26,7 +27,7 @@ class UserController extends Controller
         {
 
                return response()->json([
-                   'message' => 'User found',
+                  'user_id' => $user->id,
                    'user_token' => $user->createToken('test_token',['server:admin'])->plainTextToken,
 
                ]);
