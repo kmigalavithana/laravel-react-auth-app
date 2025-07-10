@@ -1,5 +1,5 @@
 import React from 'react';
-import type { ISignInFromProp } from "../../utilities/types/signin/Signin";
+import type { ISignInFromProp } from "../../utilities/types/signIn/Signin";
 
 
 

@@ -1,6 +1,6 @@
 import axios, { type AxiosResponse } from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import type {IUserSignInPayload} from "../../types/signin/Signin";
+import type {IUserSignInPayload} from "../../types/signIn/Signin";
 
 
 
@@ -22,11 +22,3 @@ export const UserSignIn = createAsyncThunk<AxiosResponse<any> | undefined, IUser
         });
     },
 );
-
-//return await axios.get("/sanctum/csrf-cookie").then((res) => {
-//   const response = axios.post(
-//     "/api/sign-in",
-//       signDetails,
-//);
-//   console.log(response);
-//});

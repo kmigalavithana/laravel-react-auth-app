@@ -1,5 +1,5 @@
 import * as React from "react";
-import AppRoute from "./utilities/routers/AppRoute.tsx";
+import AppRoutes from './utilities/routers/AppRoutes.tsx';
 import axios from "axios";
 
 axios.defaults.baseURL = import.meta.env. VITE_API_BASE_URL;
@@ -12,7 +12,7 @@ const App: React.FC = () => {
 
   return (
       <>
-          <AppRoute />
+          <AppRoutes />
       </>
   )
 }
