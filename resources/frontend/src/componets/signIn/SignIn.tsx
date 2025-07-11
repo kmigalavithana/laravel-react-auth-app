@@ -4,7 +4,6 @@ import {UserSignIn} from "../../utilities/api/auth/UserSignIn.ts";
 import {useDispatch, useSelector} from "react-redux";
 import type {AppDispatch, RootState} from "../../store.tsx";
 import type {ISignInState} from "../../utilities/types/signIn/Signin";
-import {Route} from "react-router-dom";
 import {useNavigate} from "react-router";
 
 const SignIn: React.FC = () => {
@@ -15,7 +14,7 @@ const SignIn: React.FC = () => {
     // need to define type definition for dispatching method
     const dispatch = useDispatch<AppDispatch>()
 
-    const { token, user_role, isAuthenticated } = useSelector(
+    const {  user_role, isAuthenticated } = useSelector(
         (state: RootState) => state.auth,
     );
 
