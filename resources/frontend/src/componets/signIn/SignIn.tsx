@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import SignInForm from "./SignInForm.tsx";
 import {UserSignIn} from "../../utilities/api/auth/UserSignIn.ts";
-import {useDispatch} from "react-redux";
-import type {AppDispatch} from "../../store.tsx";
+import {useDispatch, useSelector} from "react-redux";
+import type {AppDispatch, RootState} from "../../store.tsx";
 import type {ISignInState} from "../../utilities/types/signIn/Signin";
+import {Route} from "react-router-dom";
+import {useNavigate} from "react-router";
 
 const SignIn: React.FC = () => {
     const [signDetails, setSignDetails] = useState<ISignInState>({
@@ -12,6 +14,20 @@ const SignIn: React.FC = () => {
     });
     // need to define type definition for dispatching method
     const dispatch = useDispatch<AppDispatch>()
+
+    const { token, user_role, isAuthenticated } = useSelector(
+        (state: RootState) => state.auth,
+    );
+
+    const navigate = useNavigate();
+
+    useEffect(() => {
+
+        if(isAuthenticated && user_role ===1){
+           navigate('/dashboard')
+        }
+
+    }, [user_role,isAuthenticated,navigate]);
 
     const handleInputField = (
         event: React.ChangeEvent<HTMLInputElement>,
