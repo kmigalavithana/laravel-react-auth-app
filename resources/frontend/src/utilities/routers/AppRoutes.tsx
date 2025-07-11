@@ -7,16 +7,10 @@ import {
     checkUserTokenNotEmpty,
 } from "./checkUserAuthentication";
 import SignIn from "../../componets/signIn/SignIn.tsx";
-import Dashboard from "../../componets/dashbord/Dashboard.tsx";
+import Products from "../../componets/products/Products.tsx";
+import type {RootState} from "../../store.tsx";
 
-interface RootState {
-    auth: {
-        token: string;
-        user_id: string | null;
-        user_role: number;
-        isAuthenticated: boolean;
-    };
-}
+
 
 const AppRoutes: React.FC = () => {
     const { token, user_role, isAuthenticated } = useSelector(
@@ -32,7 +26,7 @@ const AppRoutes: React.FC = () => {
                     checkUserAuthentication(isAuthenticated) &&
                     checkUserTokenNotEmpty(token) &&
                     checkUserIsAdmin(user_role) ? (
-                        <Dashboard />
+                        <Products />
                     ) : (
                         <Navigate to="/" replace />
                     )
