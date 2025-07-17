@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Action\User\UserSignIn;
+use App\Http\Requests\User\UserSignInValidationRequest;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -10,34 +12,12 @@ use Illuminate\Support\Facades\Log;
 
 class UserController extends Controller
 {
-    public function userSignIn(Request $request): JsonResponse
+    public function userSignIn(UserSignInValidationRequest $request, UserSignIn $userSignIn)
     {
-        Log::info('work');
-        $user = User::where('email', $request->email)->first();
+        $validateUserSignInRequest = $request->validated();
 
-        if (! $user) {
-            return response()->json([
-                'message' => 'User not found'
-            ]);
-        }
-
-
-        if ($this->isValidateUserCredentials($request->all(), $user)) {
-            return response()->json([
-                'user_id' => $user->id,
-                'user_token' => $user->createToken('testToken', ['server:admin'])->plainTextToken,
-                'user_role' => $user->user_role,
-            ]);
-        }
-
-        return response()->json([
-            'message' => 'User credentials not valid'
-        ]);
-
+        return response()->json($userSignIn($validateUserSignInRequest));
     }
 
-    public function isValidateUserCredentials(array $request, User $user): bool
-    {
-        return $user->email === $request['email'] && Hash::check($request['password'], $user->password);
-    }
+
 }
