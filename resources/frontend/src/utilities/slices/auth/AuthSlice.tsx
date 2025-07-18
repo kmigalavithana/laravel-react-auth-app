@@ -5,6 +5,7 @@ import type {IAuthInitialState} from "../../types/Slices/AuthSlice";
 interface IAuthPayload {
     user_id: string;
     user_token: string;
+    user_role: number;
 }
 
 const initialState: IAuthInitialState = {

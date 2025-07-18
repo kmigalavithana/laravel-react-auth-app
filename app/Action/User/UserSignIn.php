@@ -22,7 +22,7 @@ class UserSignIn
           return [
               'user_id' => $user->id,
               'user_token' => $user->createToken('testToken', ['server:admin'])->plainTextToken,
-              'user_role' => $user->user_role,
+              'user_role' => 1,
           ];
       }
 
