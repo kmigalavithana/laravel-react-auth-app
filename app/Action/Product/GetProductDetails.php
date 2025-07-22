@@ -11,6 +11,7 @@ class GetProductDetails
     {
 
         $products = DB::table('products')->select([
+            'id',
             'product_name',
             'product_description',
             'product_price',

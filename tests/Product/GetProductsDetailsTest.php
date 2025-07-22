@@ -27,6 +27,7 @@ class GetProductsDetailsTest extends TestCase
           'status' => Response::HTTP_OK,
           'product_details' => [
               [
+                  'id' => $product->id,
                   'product_name' => $product->product_name,
                   'product_description' => $product->product_description,
                   'product_price'=> $product->product_price,
