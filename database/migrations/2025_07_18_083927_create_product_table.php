@@ -9,9 +9,23 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-$table->string('product_name');
-$table->text('product_description');
-$table->decimal('product_price', 10, 2);
-$table->integer('product_qty');
-$table->timestamps();
+    public function up(): void
+    {
+        Schema::create('products', function (Blueprint $table) {
+            $table->uuid('id')->primary();
+            $table->string('product_name');
+            $table->text('product_description');
+            $table->decimal('product_price', 10, 2);
+            $table->integer('product_qty');
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('products');
+    }
 };
