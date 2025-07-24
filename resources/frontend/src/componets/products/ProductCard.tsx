@@ -1,15 +1,23 @@
-// Define the expected shape of your product prop
-type Product = {
+interface IProductDetails {
     image: string;
     product_name: string;
     product_description: string;
-    features?: string[]; // optional
+    features?: string[];
     product_price: string;
-};
+}
 
-const ProductCard = ({ product }: { product: Product }) => {
+interface IProductCartProp {
+    product: IProductDetails;
+}
+
+// Usage in a component:
+const ProductCard: React.FC<IProductCartProp> = ({ product }) => {
     // Convert product_price to a number safely
     const price = Number(product.product_price);
+
+    const handleAddToCart = (product: IProductDetails) => {
+       console.log(product)
+    }
     return (
         <div className="bg-white rounded-2xl shadow-xl overflow-hidden hover:scale-105 transition transform duration-300">
             <img src={product.image} alt={product.product_name} className="h-48 w-full object-cover" />
@@ -33,7 +41,9 @@ const ProductCard = ({ product }: { product: Product }) => {
                     <span className="text-xl font-semibold text-blue-600">
                         ${!isNaN(price) ? price.toFixed(2) : "N/A"}
                     </span>
-                    <button className="bg-blue-600 text-white px-4 py-1 rounded-full font-bold shadow hover:bg-blue-700 transition">
+                    <button
+                        onClick={() => handleAddToCart(product)}
+                        className="bg-blue-600 text-white px-4 py-1 rounded-full font-bold shadow hover:bg-blue-700 transition">
                         Add to Cart
                     </button>
                 </div>
