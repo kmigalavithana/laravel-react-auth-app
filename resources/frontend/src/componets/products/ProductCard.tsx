@@ -1,3 +1,6 @@
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../utilities/slices/product/cartSlice";
+
 interface IProductDetails {
     image: string;
     product_name: string;
@@ -12,12 +15,15 @@ interface IProductCartProp {
 
 // Usage in a component:
 const ProductCard: React.FC<IProductCartProp> = ({ product }) => {
+    const dispatch = useDispatch();
+
+    const handleAddToCart = (product: IProductDetails) => {
+        dispatch(addToCart(product));
+    };
     // Convert product_price to a number safely
     const price = Number(product.product_price);
 
-    const handleAddToCart = (product: IProductDetails) => {
-       console.log(product)
-    }
+
     return (
         <div className="bg-white rounded-2xl shadow-xl overflow-hidden hover:scale-105 transition transform duration-300">
             <img src={product.image} alt={product.product_name} className="h-48 w-full object-cover" />

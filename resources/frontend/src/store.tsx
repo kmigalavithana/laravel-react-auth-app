@@ -2,16 +2,19 @@ import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import AuthReducer from "../src/utilities/slices/auth/AuthSlice.tsx";
+import cartReducer from "../src/utilities/slices/product/cartSlice";
+// import cartReducer from "path-to-cartSlice";
+const rootReducer = combineReducers({
+    auth: AuthReducer,
+    cart: cartReducer, // <-- add this
+});
 
+// If you want to persist the cart too:
 const persistConfig = {
     key: "root",
     storage,
-    whitelist: ["auth"],
+    whitelist: ["auth", "cart"], // <-- add "cart" here if desired
 };
-
-const rootReducer = combineReducers({
-    auth: AuthReducer,
-});
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
