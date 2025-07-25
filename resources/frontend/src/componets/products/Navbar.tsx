@@ -1,8 +1,8 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { FiShoppingCart } from "react-icons/fi";
 
 const Navbar = () => {
-  // Access the cart state from Redux
   const cartCount = useSelector((state: any) => state.cart.items.length);
 
   return (
@@ -21,9 +21,11 @@ const Navbar = () => {
             </a>
           </li>
           <li>
-            <a href="#" className="text-white hover:text-blue-200 font-medium transition relative">
-              Cart
-              {/* Display cart count if greater than 0 */}
+            <a
+              href="#"
+              className="text-white hover:text-blue-200 font-medium transition relative flex items-center"
+            >
+              <FiShoppingCart size={22} />
               {cartCount > 0 && (
                 <span className="absolute top-0 -right-3 bg-red-500 text-white text-xs rounded-full px-2 py-0.5">
                   {cartCount}
