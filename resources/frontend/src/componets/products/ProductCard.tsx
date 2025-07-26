@@ -1,13 +1,7 @@
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../utilities/slices/product/cartSlice";
+import type {IProductDetails} from "../../utilities/types/product/product";
 
-interface IProductDetails {
-    image: string;
-    product_name: string;
-    product_description: string;
-    features?: string[];
-    product_price: string;
-}
 
 interface IProductCartProp {
     product: IProductDetails;
