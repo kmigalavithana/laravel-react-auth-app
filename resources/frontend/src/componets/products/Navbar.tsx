@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { FiShoppingCart } from "react-icons/fi";
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const cartCount = useSelector((state: any) => state.cart.items.length);
@@ -21,8 +22,7 @@ const Navbar = () => {
             </a>
           </li>
           <li>
-            <a
-              href="#"
+           <Link to="/dashboard/cart"
               className="text-white hover:text-blue-200 font-medium transition relative flex items-center"
             >
               <FiShoppingCart size={22} />
@@ -31,7 +31,7 @@ const Navbar = () => {
                   {cartCount}
                 </span>
               )}
-            </a>
+            </Link>
           </li>
           <li>
             <a href="#" className="text-white hover:text-blue-200 font-medium transition">

@@ -9,6 +9,7 @@ import {
 import SignIn from "../../componets/signIn/SignIn.tsx";
 import Products from "../../componets/products/Products.tsx";
 import type {RootState} from "../../store.tsx";
+import ShoppingCart from "../../componets/ShoppingCart/ShoppingCart.tsx";
 
 
 
@@ -32,6 +33,18 @@ const AppRoutes: React.FC = () => {
                     )
                 }
             />
+            <Route
+                path="/dashboard/cart"
+                element={
+                    checkUserAuthentication(isAuthenticated) &&
+                    checkUserTokenNotEmpty(token) &&
+                    checkUserIsAdmin(user_role) ? (
+                        <ShoppingCart />
+                    ) : (
+                        <Navigate to="/" replace />
+                    )
+                }
+                />
         </Routes>
     );
 };
