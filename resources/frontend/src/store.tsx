@@ -3,6 +3,7 @@ import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import AuthReducer from "../src/utilities/slices/auth/AuthSlice.tsx";
 import cartReducer from "../src/utilities/slices/product/cartSlice";
+import { useSelector } from "react-redux";
 // import cartReducer from "path-to-cartSlice";
 const rootReducer = combineReducers({
     auth: AuthReducer,
@@ -33,3 +34,9 @@ export type AppDispatch = typeof store.dispatch;
 export type RootState = ReturnType<typeof store.getState>;
 
 export { store, persistor };
+
+const ShoppingCart = () => {
+  const cartItems = useSelector((state: any) => state.cart.items);
+
+  // ...rest of your UI
+};

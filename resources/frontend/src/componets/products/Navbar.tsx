@@ -12,9 +12,9 @@ const Navbar = () => {
         <span className="font-bold text-white text-xl tracking-wider">ShopEase</span>
         <ul className="flex space-x-6">
           <li>
-            <a href="#" className="text-white hover:text-blue-200 font-medium transition">
+            <Link to="/dashboard" className="text-white hover:text-blue-200 font-medium transition">
               Home
-            </a>
+            </Link>
           </li>
           <li>
             <a href="#" className="text-white hover:text-blue-200 font-medium transition">
