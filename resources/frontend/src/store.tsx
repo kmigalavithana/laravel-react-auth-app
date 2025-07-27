@@ -4,7 +4,6 @@ import storage from "redux-persist/lib/storage";
 import AuthReducer from "../src/utilities/slices/auth/AuthSlice.tsx";
 import cartReducer from "../src/utilities/slices/product/cartSlice";
 import { useSelector } from "react-redux";
-// import cartReducer from "path-to-cartSlice";
 const rootReducer = combineReducers({
     auth: AuthReducer,
     cart: cartReducer, // <-- add this
